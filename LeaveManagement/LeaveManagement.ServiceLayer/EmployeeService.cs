@@ -13,12 +13,12 @@ using LeaveManagement.ServiceLayer.Interfaces;
 using Microsoft.AspNet.Identity;
 using System.Web;
 using Microsoft.Owin.Security;
-using System.Net.Http;
+
 
 
 namespace LeaveManagement.ServiceLayer
 {
-    public class EmployeeService:IEmployeeService
+    public class EmployeeService : IEmployeeService
     {
         private readonly IEmployeeRepository _employeeRepository;
 
@@ -26,7 +26,7 @@ namespace LeaveManagement.ServiceLayer
         {
             _employeeRepository = employeeRepository;
         }
-        public string getUserID()
+        public string GetUserID()
         {
             return (HttpContext.Current.User.Identity.GetUserId());
         }
@@ -41,9 +41,10 @@ namespace LeaveManagement.ServiceLayer
                 //login
                 var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
                 var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
-                authenticationManager.SignIn(new AuthenticationProperties(), userIdentity);         
+                authenticationManager.SignIn(new AuthenticationProperties(), userIdentity);
+                
             }
-            
+
         }
 
         public void EmployeeLogout()
@@ -53,19 +54,27 @@ namespace LeaveManagement.ServiceLayer
         }
         public void UpdateEmployeeInfo(EmployeeInfoViewModel evm)
         {
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<EmployeeInfoViewModel,EmployeeInfo>(); cfg.IgnoreUnmapped(); });
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<EmployeeInfoViewModel, EmployeeInfo>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
             EmployeeInfo e = mapper.Map<EmployeeInfoViewModel, EmployeeInfo>(evm);
             _employeeRepository.UpdateEmployeeInfo(e);
         }
 
-        public EmployeeInfoViewModel ViewEmployeeInfo(string  id)
+        public EmployeeInfoViewModel ViewEmployeeInfo(string id)
         {
             EmployeeInfo e = _employeeRepository.ViewEmployeeInfo(id);
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<EmployeeInfo,EmployeeInfoViewModel>(); cfg.IgnoreUnmapped(); });
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<EmployeeInfo, EmployeeInfoViewModel>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
             EmployeeInfoViewModel evm = mapper.Map<EmployeeInfo, EmployeeInfoViewModel>(e);
             return evm;
+        }
+        public void UploadUserImage(EmployeeInfoViewModel evm)
+        {
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<EmployeeInfoViewModel, EmployeeInfo>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            EmployeeInfo e = mapper.Map<EmployeeInfoViewModel, EmployeeInfo>(evm);
+            _employeeRepository.UploadUserImage(e);
+
         }
     }    
 }

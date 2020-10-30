@@ -318,6 +318,7 @@
     <Content Include="Views\Shared\_Layout1.cshtml" />
     <Content Include="Views\Employee\Login.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_UploadImage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

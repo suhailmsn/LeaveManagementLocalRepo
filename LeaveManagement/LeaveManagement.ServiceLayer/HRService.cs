@@ -34,7 +34,7 @@ namespace LeaveManagement.ServiceLayer
             var userStore = new ApplicationUserStore(appDbContext);
             var userManager = new ApplicationUserManager(userStore);
             var passwordHash = Crypto.HashPassword(rvm.Password);
-            var user = new ApplicationUser() { Email = rvm.Email, UserName = rvm.Name, PasswordHash = passwordHash, PhoneNumber = rvm.Contact,EmployeeInfo=new EmployeeInfo() };
+            var user = new ApplicationUser() { Email = rvm.Email, UserName = rvm.Name, PasswordHash = passwordHash, PhoneNumber = rvm.Contact, EmployeeInfo = new EmployeeInfo() };
             var result = userManager.Create(user);
             if (result.Succeeded)
             {

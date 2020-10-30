@@ -79,21 +79,29 @@ namespace LeaveManagement.Controllers
             var appDbContext = new LeaveManagementDbContext();
             var userStore = new ApplicationUserStore(appDbContext);
             var userManager = new ApplicationUserManager(userStore);
-            string uid = _employeeService.getUserID();
+            string uid = _employeeService.GetUserID();
             EmployeeInfoViewModel ivm=_employeeService.ViewEmployeeInfo(uid);
-
-            //EmployeeInfoViewModel infoViewModel = _employeeService.ViewEmployeeInfo(id);
             return View(ivm);
         }
             [HttpPost]
             public ActionResult EditInfo(EmployeeInfoViewModel evm)
             {
-            string uid = _employeeService.getUserID();
+            string uid = _employeeService.GetUserID();
+            EmployeeInfoViewModel ivm = _employeeService.ViewEmployeeInfo(uid);
+            evm.EmployeeInfoID = ivm.EmployeeInfoID;
+            _employeeService.UploadUserImage(evm);
+            _employeeService.UpdateEmployeeInfo(evm);
+                return RedirectToAction("EditInfo");
+            }
+        [HttpPost]
+        public ActionResult UploadImage(EmployeeInfoViewModel evm)
+        {
+            string uid = _employeeService.GetUserID();
             EmployeeInfoViewModel ivm = _employeeService.ViewEmployeeInfo(uid);
             evm.EmployeeInfoID = ivm.EmployeeInfoID;
             _employeeService.UpdateEmployeeInfo(evm);
-                return View(evm);
-            }
+            return View("EditInfo",evm);
         }
+    }
     }
 
