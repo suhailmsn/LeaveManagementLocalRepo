@@ -26,6 +26,8 @@ namespace LeaveManagement.Repositories
                 ei.LastName = e.LastName;
                 ei.ProjectsDone = e.ProjectsDone;
                 ei.Address = e.Address;
+                ei.Bio = e.Bio;
+                ei.Hobbies = e.Hobbies;
                 ei.DateOfBirth = e.DateOfBirth;
                 _db.SaveChanges();
             }

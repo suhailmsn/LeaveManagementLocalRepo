@@ -8,22 +8,6 @@
         public override void Up()
         {
             CreateTable(
-                "dbo.EmployeeInfoes",
-                c => new
-                    {
-                        EmployeeInfoID = c.Int(nullable: false, identity: true),
-                        DateOfBirth = c.DateTime(nullable: false),
-                        ProjectsDone = c.String(),
-                        Address = c.String(),
-                        FirstName = c.String(),
-                        LastName = c.String(),
-                        ApplicationUser_Id = c.String(nullable: false, maxLength: 128),
-                    })
-                .PrimaryKey(t => t.EmployeeInfoID)
-                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
-                .Index(t => t.ApplicationUser_Id);
-            
-            CreateTable(
                 "dbo.AspNetUsers",
                 c => new
                     {
@@ -39,6 +23,7 @@
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex");
@@ -55,6 +40,24 @@
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId);
+            
+            CreateTable(
+                "dbo.EmployeeInfoes",
+                c => new
+                    {
+                        EmployeeInfoID = c.Int(nullable: false, identity: true),
+                        DateOfBirth = c.DateTime(),
+                        ProjectsDone = c.String(),
+                        Address = c.String(),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Bio = c.String(),
+                        Hobbies = c.String(),
+                        ApplicationUser_Id = c.String(nullable: false, maxLength: 128),
+                    })
+                .PrimaryKey(t => t.EmployeeInfoID)
+                .ForeignKey("dbo.AspNetUsers", t => t.ApplicationUser_Id)
+                .Index(t => t.ApplicationUser_Id);
             
             CreateTable(
                 "dbo.AspNetUserLogins",
@@ -76,8 +79,8 @@
                         RoleId = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => new { t.UserId, t.RoleId })
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .ForeignKey("dbo.AspNetRoles", t => t.RoleId, cascadeDelete: true)
+                .ForeignKey("dbo.AspNetUsers", t => t.UserId, cascadeDelete: true)
                 .Index(t => t.UserId)
                 .Index(t => t.RoleId);
             
@@ -95,24 +98,24 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.EmployeeInfoes", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
+            DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.EmployeeInfoes", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
+            DropIndex("dbo.EmployeeInfoes", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.EmployeeInfoes", new[] { "ApplicationUser_Id" });
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
+            DropTable("dbo.EmployeeInfoes");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.EmployeeInfoes");
         }
     }
 }

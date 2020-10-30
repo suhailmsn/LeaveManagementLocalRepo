@@ -18,6 +18,7 @@ namespace LeaveManagement.DataModels
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Bio { get; set; }
+        public string Hobbies { get; set; }
 
 
         [Required]
