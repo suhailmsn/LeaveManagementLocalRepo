@@ -1,0 +1,71 @@
+﻿@using System.Web.Optimization
+@model LeaveManagement.ViewModels.EmployeeInfoViewModel
+@{
+    ViewBag.Title = "Edit Employee Details";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+</head>
+
+
+
+<body>
+    <div class="container-fluid col-md-8">
+        <div class="row">
+            <div class="col-sm-12">
+                <h1>Employee Information</h1>
+                <form novalidate="novalidate" action="/Employee/EditInfo" method="post" class="needs-validation">
+                    @Html.AntiForgeryToken()
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="FirstName">Projects:</label>
+                            <textarea class="form-control" id="FirstName" placeholder="Your First Name" name="FirstName" autofocus="autofocus" rows="1">@Model.FirstName</textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="LastName">Projects:</label>
+                            <textarea class="form-control" id="FirstName" placeholder="Your Last Name" name="LastName" autofocus="autofocus" rows="1">@Model.LastName</textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="ProjectsDone">Projects:</label>
+                            <textarea class="form-control" id="ProjectsDone" placeholder="Your Projects" name="ProjectsDone" rows="3">@Model.ProjectsDone</textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="Bio">Your Bio:</label>
+                            <textarea class="form-control" id="Bio" placeholder="Your Bio" name="Bio" rows="2">@Model.Bio</textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="Hobbies">Your Hobbies:</label>
+                            <textarea class="form-control" id="Hobbies" placeholder="Your Hobbies" name="Hobbies" rows="4">@Model.Hobbies</textarea>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-sm-12">
+                            <label for="Address">Your Address:</label>
+                            <textarea class="form-control" id="Address" placeholder="Address" name="Address" rows="2">@Model.Address</textarea>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

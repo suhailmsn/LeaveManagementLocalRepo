@@ -1,0 +1,108 @@
+﻿@using System.Web.Optimization
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<html>
+<head>
+   
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+
+
+<body>
+    <div class="container-fluid col-md-6">
+        <div class="row">
+            <div class="col-sm-12">
+                <br />
+                <h2 class="text-center"> @ViewBag.Title Employee</h2>
+                @Html.AntiForgeryToken()
+            <form novalidate="novalidate" action="/Employee/Register" method="post" class="needs-validation">
+                <div class="form-row">
+                    <div class="form-group col-sm-12">
+                        <label for="Email">Email</label>
+                        <input type="email" class="form-control" id="Email" placeholder="Email" name="Email" required="required" />
+                        <div class="valid-feedback">
+                        </div>
+                        <div class="invalid-feedback">
+                            Invalid email
+                        </div>
+                        <small class="email-exist text-danger"></small>
+                    </div>
+                </div>
+                <br />
+                <div class="form-row">
+                    <div class="form-group col">
+                        <label for="Name">Username</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Enter Username" name="Name" required="required" pattern="^[a-zA-Z0-9 ]*$" />
+                        <div class="valid-feedback">
+                        </div>
+                        <div class="invalid-feedback">
+                        Invalid username [No special characters].
+                        </div>
+                    </div>
+                    <div class="form-group col">
+                        <label for="Contact">Phone Number</label>
+                        <input type="text" class="form-control" id="contact" placeholder="Enter Phone Number" name="Contact" required="required" pattern="^[0-9]*$" />
+                        <div class="valid-feedback">
+                        </div>
+                        <div class="invalid-feedback">
+                         Invalid phone number.
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="form-row">
+                    <div class="form-group col-sm-6">
+                        <label for="Password">Password</label>
+                        <input type="password" class="form-control" id="Password" placeholder="Password" name="Password" required="required" minlength="6" oninput="form.ConfirmPassword.pattern = escapeRegExp(this.value)" />
+                        <div class="valid-feedback">
+                        </div>
+                        <div class="invalid-feedback">
+                            Password must contain at least 6 characters.
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <label for="ConfirmPassword">Confirm Password</label>
+                        <input type="password" class="form-control" id="txtConfirmPassword" placeholder="Confirm Password" name="ConfirmPassword" required="required" />
+                        <div class="valid-feedback">
+                        </div>
+                        <div class="invalid-feedback">
+                            Password and Confirm Password do not match.
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        $(document).on("submit", ".needs-validation", validate);
+        $(".needs-validation input").blur(validate);
+        function validate(event) {
+            if ($(".needs-validation")[0].checkValidity() == false || $(".email-exist").text() != "") {
+                event.preventDefault();
+            }
+            $(".needs-validation")[0].classList.add("was-validated");
+        }
+
+        function escapeRegExp(str) {
+            return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+        }
+
+
+    </script>
+
+</body>
+</html>
+
+

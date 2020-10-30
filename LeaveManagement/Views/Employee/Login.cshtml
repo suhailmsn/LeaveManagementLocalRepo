@@ -1,0 +1,31 @@
+﻿@using System.Web.Optimization
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<html>
+    <head>
+    </head>
+    <body class="text-center">
+        <div class=".signinclass">
+            <form class="form-signin" action="/Employee/Login" method="post">
+                <h1 class="h3 mb-3 font-weight-normal">Login</h1>
+                <label for="Email" class="sr-only">Email address</label>
+                <input type="email" id="Email" class="form-control" placeholder="Email address" name=Email required="required" autofocus="autofocus">
+                <label for="Password" class="sr-only">Password</label>
+                <input type="password" id="Password" class="form-control" placeholder="Password" name=Password required="required">
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+                <p class="mt-5 mb-3 text-muted">© 2019-2020</p>
+            </form>
+        </div>
+
+    </body>
+    </html>
+
+
