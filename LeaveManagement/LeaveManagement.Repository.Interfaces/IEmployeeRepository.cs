@@ -11,6 +11,7 @@ namespace LeaveManagement.Repository.Interfaces
     {
         void UpdateEmployeeInfo(EmployeeInfo e);
         EmployeeInfo ViewEmployeeInfo(string id);
+        void UploadUserImage(EmployeeInfo e);
 
     }
 }

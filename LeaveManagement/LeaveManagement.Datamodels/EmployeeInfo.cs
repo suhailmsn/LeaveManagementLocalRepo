@@ -19,6 +19,8 @@ namespace LeaveManagement.DataModels
         public string LastName { get; set; }
         public string Bio { get; set; }
         public string Hobbies { get; set; }
+        public string ImageUrl { get; set; }
+
 
 
         [Required]

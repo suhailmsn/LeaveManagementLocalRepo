@@ -10,7 +10,8 @@ namespace LeaveManagement.ServiceLayer.Interfaces
 {
     public interface IEmployeeService
     {
-        string getUserID();
+        void UploadUserImage(EmployeeInfoViewModel evm);
+        string GetUserID();
         void EmployeeLogin(LoginViewModel lvm);
         void EmployeeLogout();
         void UpdateEmployeeInfo(EmployeeInfoViewModel evm);

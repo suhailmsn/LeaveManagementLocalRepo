@@ -5,6 +5,7 @@ using LeaveManagement.DataModels;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using LeaveManagement.Repository.Interfaces;
+using System.Web;
 
 namespace LeaveManagement.Repositories
 {
@@ -19,7 +20,7 @@ namespace LeaveManagement.Repositories
         public void UpdateEmployeeInfo(EmployeeInfo e)
         {
             EmployeeInfo ei;
-            ei = _db.EmployeeInfo.Where(temp => (temp.EmployeeInfoID == e.EmployeeInfoID)).FirstOrDefault();
+            ei = _db.EmployeeInfo.Where(temp =>temp.EmployeeInfoID == e.EmployeeInfoID).FirstOrDefault();
             if (ei != null)
             {
                 ei.FirstName = e.FirstName;
@@ -36,9 +37,26 @@ namespace LeaveManagement.Repositories
         public EmployeeInfo ViewEmployeeInfo(string eid)
         {
             EmployeeInfo ei;
-            ei = _db.EmployeeInfo.Where(temp => (temp.ApplicationUser.Id == eid)).FirstOrDefault();
+            ei = _db.EmployeeInfo.Where(temp =>temp.ApplicationUser.Id == eid).FirstOrDefault();
             return ei;
         }
 
+        public void UploadUserImage(EmployeeInfo e)
+        {
+            if (HttpContext.Current.Request.Files.Count >= 1)
+            {
+                var file = HttpContext.Current.Request.Files[0];
+                var imgBytes = new Byte[file.ContentLength];
+                file.InputStream.Read(imgBytes, 0, file.ContentLength);
+                var base64String = Convert.ToBase64String(imgBytes, 0, imgBytes.Length);
+                EmployeeInfo ei =_db.EmployeeInfo.Where(temp =>temp.EmployeeInfoID == e.EmployeeInfoID).FirstOrDefault();
+                if (ei != null)
+                {
+                    ei.ImageUrl = base64String;
+                    _db.SaveChanges();
+                }
+            }
+
+        }
     }
 }

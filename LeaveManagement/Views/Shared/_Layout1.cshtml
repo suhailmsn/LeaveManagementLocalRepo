@@ -1,4 +1,5 @@
-﻿@using System.Web.Optimization
+﻿@model LeaveManagement.ViewModels.EmployeeInfoViewModel
+@using System.Web.Optimization
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,17 +16,18 @@
             <a class="py-3 d-none d-md-inline-block" href="/Home/Services">Services</a>
             <a class="py-3 d-none d-md-inline-block" href="/Home/Products">Products</a>
 
-      
-                @if (User.Identity.IsAuthenticated == false)
-                {
-                    <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/Register">Register</a>
-                    <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/Login">Login</a>
-                }
-                @if (User.Identity.IsAuthenticated == true)
-                {
-                    <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/EditInfo">@User.Identity.Name</a>
-                    <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/Logout">Logout</a>
-                }
+
+            @if (User.Identity.IsAuthenticated == false)
+            {
+                <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/Register">Register</a>
+                <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/Login">Login</a>
+            }
+            @if (User.Identity.IsAuthenticated == true)
+            {
+                <img src="data:image;base64,@ViewBag.ImageUrl" class="rounded float-left" width="20px" height="20px" />
+                <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/EditInfo">@User.Identity.Name</a>
+                <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/Logout">Logout</a>
+            }
 
         </div>
     </nav>

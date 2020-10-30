@@ -15,6 +15,7 @@ namespace LeaveManagement.ViewModels
         public string Bio { get; set; }
         public string Hobbies { get; set; }
         public string Address { get; set; }
-        
+        public string ImageUrl { get; set; }
+
     }
 }
