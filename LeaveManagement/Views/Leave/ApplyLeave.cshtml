@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "ApplyLeave";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+<head>
+
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<div class="container-fluid col-md-8">
+    <div class="row">
+        <div class="col-sm-12">
+            <br />
+            <h2 class="text-center"> Leave Application</h2>
+            <br /><br />
+            @Html.AntiForgeryToken()
+        <form novalidate="novalidate" action="/Leave/ApplyLeave" method="post" class="needs-validation">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="FromDate">From Date:</label>
+                    <input type="Date" class="form-control" id="FromDate" name="FromDate" required="required" />
+                    <div class="valid-feedback">
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid Date
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="ToDate">To Date</label>
+                    <input type="Date" class="form-control" id="ToDate:" name="ToDate" required="required" />
+                    <div class="valid-feedback">
+                    </div>
+                    <div class="invalid-feedback">
+                        Invalid Date
+                    </div>
+                </div>
+                <div class="form-check col-md-2 form-check-inline">
+                    <label for="afternoon">Afternoon only</label>
+                    <input id="afternoon" name="IsAfternoonOnly" type="checkbox">
+                </div>
+                <div class="form-check col-md-2 form-check-inline">
+                    <label for="forenoon">Forenoon only</label>
+                    <input id="forenoon" name="IsForeNoonOnly" type="checkbox">
+                </div>
+                <div class="col-md-3">
+                    <label for="ApprovedBy">Request to project manager:</label>
+                    <select id="ApprovedBy" name="ApprovedBy" class="form-control">
+                        <option value="ProjectManager">PM1</option>
+                        <option value="bbbbb">PM2</option>
+                    </select>
+                </div>
+                    <div class="col-md-3">
+                        <label for="LeaveTypeID">Leave Type:</label>
+                        <select id="id_type" name="LeaveTypeID" class="form-control">
+                            <option value=1>Loss Of Pay</option>
+                            <option value=2>Compensatory</option>
+                        </select>
+                    </div>
+                </div>
+            <br />
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <label for="LeaveReason">Reason for leave:</label>
+                    <textarea class="form-control" id="LeaveReason" placeholder="Reason for leave/Comments" name="LeaveReason" rows="3"></textarea>
+                </div>
+            </div>
+            <br />
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).on("submit", ".needs-validation", validate);
+    $(".needs-validation input").blur(validate);
+    function validate(event) {
+        if ($(".needs-validation")[0].checkValidity() == false) {
+            event.preventDefault();
+        }
+        $(".needs-validation")[0].classList.add("was-validated");
+    }
+</script>

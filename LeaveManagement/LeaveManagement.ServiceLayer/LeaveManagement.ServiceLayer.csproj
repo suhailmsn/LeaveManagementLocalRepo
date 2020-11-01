@@ -91,6 +91,7 @@
     <Compile Include="EmployeeService.cs" />
     <Compile Include="HRService.cs" />
     <Compile Include="MapperExtensions.cs" />
+    <Compile Include="PMService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

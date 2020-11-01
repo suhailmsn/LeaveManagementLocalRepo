@@ -94,7 +94,24 @@
     <Compile Include="Migrations\202010301158521_AddUserImagetoDb.designer.cs">
       <DependentUpon>202010301158521_AddUserImagetoDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011010731312_AddedvirtualKeywordtoEntities.cs" />
+    <Compile Include="Migrations\202011010731312_AddedvirtualKeywordtoEntities.designer.cs">
+      <DependentUpon>202011010731312_AddedvirtualKeywordtoEntities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011011006332_AddedTablesforLeaveData.cs" />
+    <Compile Include="Migrations\202011011006332_AddedTablesforLeaveData.designer.cs">
+      <DependentUpon>202011011006332_AddedTablesforLeaveData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011011452565_EmployeeIDData.cs" />
+    <Compile Include="Migrations\202011011452565_EmployeeIDData.designer.cs">
+      <DependentUpon>202011011452565_EmployeeIDData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011011651072_AddedPMUserName.cs" />
+    <Compile Include="Migrations\202011011651072_AddedPMUserName.designer.cs">
+      <DependentUpon>202011011651072_AddedPMUserName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="PMRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +134,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010301158521_AddUserImagetoDb.resx">
       <DependentUpon>202010301158521_AddUserImagetoDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011010731312_AddedvirtualKeywordtoEntities.resx">
+      <DependentUpon>202011010731312_AddedvirtualKeywordtoEntities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011011006332_AddedTablesforLeaveData.resx">
+      <DependentUpon>202011011006332_AddedTablesforLeaveData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011011452565_EmployeeIDData.resx">
+      <DependentUpon>202011011452565_EmployeeIDData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011011651072_AddedPMUserName.resx">
+      <DependentUpon>202011011651072_AddedPMUserName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

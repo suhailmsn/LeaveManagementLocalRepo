@@ -15,6 +15,8 @@ namespace LeaveManagement.Repositories
         }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<EmployeeInfo> EmployeeInfo { get; set; }
+        public DbSet<LeaveData> LeaveDatas { get; set; }
+        public DbSet<LeaveType> LeaveTypes { get; set; }
 
     }
 }

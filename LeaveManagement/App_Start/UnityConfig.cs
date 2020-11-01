@@ -38,7 +38,9 @@ namespace LeaveManagement
         {
             container.RegisterType<IHRService, HRService>();
             container.RegisterType<IEmployeeService, EmployeeService>();
+            container.RegisterType<IPMService, PMService>();
             container.RegisterType<IEmployeeRepository, EmployeeRepository>();
+            container.RegisterType<IPMRepository, PMRepository>();
 
         }
     }

@@ -1,5 +1,4 @@
-﻿@model LeaveManagement.ViewModels.EmployeeInfoViewModel
-@using System.Web.Optimization
+﻿@using System.Web.Optimization
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,27 +8,87 @@
 </head>
 
 <body>
-    <nav class="site-header sticky-top py-1">
-        <div class="container d-flex flex-column flex-md-row justify-content-between">
-            <a class="py-3 d-none d-md-inline-block" href="/Home">Home</a>
-            <a class="py-3 d-none d-md-inline-block" href="/Home/About">About</a>
-            <a class="py-3 d-none d-md-inline-block" href="/Home/Services">Services</a>
-            <a class="py-3 d-none d-md-inline-block" href="/Home/Products">Products</a>
-
-
-            @if (User.Identity.IsAuthenticated == false)
-            {
-                <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/Register">Register</a>
-                <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/Login">Login</a>
-            }
-            @if (User.Identity.IsAuthenticated == true)
-            {
-                <img src="data:image;base64,@ViewBag.ImageUrl" class="rounded float-left" width="20px" height="20px" />
-                <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/EditInfo">@User.Identity.Name</a>
-                <a class="py-lg-3 d-none d-md-inline-block" href="/Employee/Logout">Logout</a>
-            }
-
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="navbar-collapse collapse w-50 order-1 order-md-0 dual-collapse2">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home/About">About</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home/Services">Services</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home/Products">Products</a>
+                </li>
+            </ul>
         </div>
+        <div class="mx-auto order-0">
+            <a class="navbar-brand mx-auto" href="#">Company Name</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse w-50 order-3 dual-collapse2">
+            <ul class="navbar-nav ml-auto">
+                @if (User.Identity.IsAuthenticated == false)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Employee/Register">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Employee/Login">Login</a>
+                    </li>
+                }
+                @if (User.Identity.IsAuthenticated == true)
+                {
+
+                    if (Roles.IsUserInRole("ProjectManager") == true)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Employee/EditInfo">@User.Identity.Name - Project Manager</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Leave/ApplyLeave">Apply Leave</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Leave/ViewLeave">View Leave</a>
+                        </li>
+                    }
+                    if (Roles.IsUserInRole("Employee") == true)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Employee/EditInfo">@User.Identity.Name - Employee</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Leave/ApplyLeave">Apply Leave</a>
+                        </li>
+                    }
+                    if (Roles.IsUserInRole("HumanResources") == true)
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Employee/EditInfo">@User.Identity.Name -Human Resources </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Leave/ApplyLeave">Apply Leave</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Employee/Register">Register Employee</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Employee/Delete">Delete Employee</a>
+                        </li>
+
+                    }
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Employee/Logout">Logout</a>
+                    </li>
+                }
+            </ul>
+        </div>
+
     </nav>
 
     @RenderBody()

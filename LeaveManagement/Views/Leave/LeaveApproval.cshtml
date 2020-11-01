@@ -1,0 +1,61 @@
+﻿@model LeaveManagement.ViewModels.LeaveViewModel
+@{
+    ViewBag.Title = "Leave Approval";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<head>
+
+    <script src="~/Scripts/jquery-3.5.1.js"></script>
+    <script src="~/Scripts/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<div class="container-fluid col-md-8">
+    <div class="row">
+        <div class="col-sm-12">
+            <br />
+            <h2 class="text-center"> Leave Application</h2>
+            <br /><br />
+            @Html.AntiForgeryToken()
+            <form action="/Leave/LeaveApproval" method="post">
+                <div class="form-row">
+                    <div class="col">
+                        <label for="FromDate">From Date:</label>
+                        <textarea  class = "form-group" readonly>@Model.FromDate </textarea>
+                    </div>
+                    <div class="col">
+                        <label for="ToDate">To Date</label>
+                        <textarea  class = "form-group" readonly>@Model.ToDate </textarea>
+                    </div>
+                    <div class=" col">
+                        <label for="afternoon">Afternoon Only:</label>
+                        <textarea  class = "form-group" readonly>@Model.IsAfternoonOnly </textarea>
+                    </div>
+                    <div class="col">
+                        <label for="forenoon">Forenoon Only:</label>
+                        <textarea class = "form-group" readonly>@Model.IsForenoonOnly </textarea>
+                    </div>
+                    <div class="col">
+                        <label for="ApprovedBy">Request to project manager:</label>
+                        <textarea  class = "form-group" readonly>@Model.ApprovedBy </textarea>
+                    </div>
+                    <div class="col">
+                        <label for="LeaveTypeID">Leave Type:</label>
+                        <textarea  class = "form-group" readonly>@Model.LeaveTypeID</textarea>
+                    </div>
+                </div>
+                <br />
+                <div class="form-row">
+                    <div class="form-group col-sm-12">
+                        <label for="LeaveReason">Reason for leave:</label>
+                        <textarea  class = "form-group" rows="3" readonly>@Model.LeaveReason </textarea>
+                    </div>
+                </div>
+                <br />
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

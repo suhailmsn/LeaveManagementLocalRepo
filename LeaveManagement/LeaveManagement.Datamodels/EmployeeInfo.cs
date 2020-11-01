@@ -20,11 +20,10 @@ namespace LeaveManagement.DataModels
         public string Bio { get; set; }
         public string Hobbies { get; set; }
         public string ImageUrl { get; set; }
-
-
+        public string EmployeeID { get; set; }
 
         [Required]
-        public ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
     }
 }

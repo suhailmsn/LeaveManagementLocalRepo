@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="IEmployeeService.cs" />
     <Compile Include="IHRService.cs" />
+    <Compile Include="IPMService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
