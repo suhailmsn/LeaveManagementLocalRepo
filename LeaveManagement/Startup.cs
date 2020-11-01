@@ -7,6 +7,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.AspNet.Identity.EntityFramework;
 using LeaveManagement.DataModels;
 using LeaveManagement.Repositories;
+using System.Linq;
 
 [assembly: OwinStartup(typeof(LeaveManagement.Startup))]
 
@@ -18,6 +19,7 @@ namespace LeaveManagement
         {
             app.UseCookieAuthentication(new CookieAuthenticationOptions() { AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie, LoginPath = new PathString("/Account/Login") });
             this.CreateRolesAndUsers();
+            this.CreateLeaveType();
         }
 
         public void CreateRolesAndUsers()
@@ -77,6 +79,28 @@ namespace LeaveManagement
                 var role = new IdentityRole();
                 role.Name = "Employee";
                 roleManager.Create(role);
+            }
+        }
+        public void CreateLeaveType()
+        
+        {
+            var appDbContext = new LeaveManagementDbContext();
+            LeaveType l = new LeaveType();
+            l = appDbContext.LeaveTypes.Where(t => t.LeaveTypeName == "Loss of Pay").FirstOrDefault();
+            if (l == null)
+            {
+                LeaveType l1 = new LeaveType();
+                l1.LeaveTypeName = "Loss of Pay";
+                appDbContext.LeaveTypes.Add(l1);
+                appDbContext.SaveChanges();
+            }
+            l = appDbContext.LeaveTypes.Where(t => t.LeaveTypeName == "Compensatory").FirstOrDefault();
+            if (l == null)
+            {
+                LeaveType l1 = new LeaveType();
+                l1.LeaveTypeName = "Compensatory";
+                appDbContext.LeaveTypes.Add(l1);
+                appDbContext.SaveChanges();
             }
         }
     }

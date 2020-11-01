@@ -12,9 +12,11 @@ namespace LeaveManagement.ServiceLayer.Interfaces
     {
         void UploadUserImage(EmployeeInfoViewModel evm);
         string GetUserID();
+        string GetUserName();
         void EmployeeLogin(LoginViewModel lvm);
         void EmployeeLogout();
         void UpdateEmployeeInfo(EmployeeInfoViewModel evm);
         EmployeeInfoViewModel ViewEmployeeInfo(string id);
+        void ApplyLeave(NewLeaveViewModel nlvm);
     }
 }

@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using LeaveManagement.Repository.Interfaces;
 using System.Web;
+using Microsoft.AspNet.Identity;
 
 namespace LeaveManagement.Repositories
 {
@@ -19,6 +20,11 @@ namespace LeaveManagement.Repositories
 
         public void UpdateEmployeeInfo(EmployeeInfo e)
         {
+            var appDbContext = new LeaveManagementDbContext();
+            var userStore = new ApplicationUserStore(appDbContext);
+            var userManager = new ApplicationUserManager(userStore);
+            ApplicationUser user = userManager.FindById(e.ApplicationUser.Id);
+            
             EmployeeInfo ei;
             ei = _db.EmployeeInfo.Where(temp =>temp.EmployeeInfoID == e.EmployeeInfoID).FirstOrDefault();
             if (ei != null)
@@ -30,6 +36,7 @@ namespace LeaveManagement.Repositories
                 ei.Bio = e.Bio;
                 ei.Hobbies = e.Hobbies;
                 ei.DateOfBirth = e.DateOfBirth;
+                ei.ApplicationUser = user;
                 _db.SaveChanges();
             }
         }
@@ -57,6 +64,12 @@ namespace LeaveManagement.Repositories
                 }
             }
 
+        }
+        public void ApplyLeave(LeaveData l)
+        {
+        
+            _db.LeaveDatas.Add(l);
+            _db.SaveChanges();
         }
     }
 }

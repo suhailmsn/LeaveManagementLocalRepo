@@ -80,6 +80,8 @@
   <ItemGroup>
     <Compile Include="ApplicationUser.cs" />
     <Compile Include="EmployeeInfo.cs" />
+    <Compile Include="LeaveData.cs" />
+    <Compile Include="LeaveType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

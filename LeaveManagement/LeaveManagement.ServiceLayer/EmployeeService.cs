@@ -30,6 +30,10 @@ namespace LeaveManagement.ServiceLayer
         {
             return (HttpContext.Current.User.Identity.GetUserId());
         }
+        public string GetUserName()
+        {
+            return (HttpContext.Current.User.Identity.GetUserName());
+        }
         public void EmployeeLogin(LoginViewModel lvm)
         {
             var appDbContext = new LeaveManagementDbContext();
@@ -75,6 +79,13 @@ namespace LeaveManagement.ServiceLayer
             EmployeeInfo e = mapper.Map<EmployeeInfoViewModel, EmployeeInfo>(evm);
             _employeeRepository.UploadUserImage(e);
 
+        }
+        public void ApplyLeave(NewLeaveViewModel nlvm)
+        {
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<NewLeaveViewModel,LeaveData>(); cfg.IgnoreUnmapped(); });
+            IMapper mapper = config.CreateMapper();
+            LeaveData l = mapper.Map<NewLeaveViewModel, LeaveData>(nlvm);
+            _employeeRepository.ApplyLeave(l);
         }
     }    
 }

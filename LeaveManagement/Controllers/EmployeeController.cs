@@ -89,6 +89,7 @@ namespace LeaveManagement.Controllers
             string uid = _employeeService.GetUserID();
             EmployeeInfoViewModel ivm = _employeeService.ViewEmployeeInfo(uid);
             evm.EmployeeInfoID = ivm.EmployeeInfoID;
+            evm.EmployeeID = uid;
             _employeeService.UploadUserImage(evm);
             _employeeService.UpdateEmployeeInfo(evm);
                 return RedirectToAction("EditInfo");
