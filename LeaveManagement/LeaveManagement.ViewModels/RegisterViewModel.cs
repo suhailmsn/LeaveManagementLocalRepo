@@ -23,6 +23,9 @@ namespace LeaveManagement.ViewModels
         [Required]
         public string ConfirmPassword { get; set; }
 
+        [Required]
+        public string RoleName { get; set; }
+
 
     }
 }

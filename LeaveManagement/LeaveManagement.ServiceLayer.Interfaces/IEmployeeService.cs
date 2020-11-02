@@ -18,5 +18,7 @@ namespace LeaveManagement.ServiceLayer.Interfaces
         void UpdateEmployeeInfo(EmployeeInfoViewModel evm);
         EmployeeInfoViewModel ViewEmployeeInfo(string id);
         void ApplyLeave(NewLeaveViewModel nlvm);
+        List<ApplicationUser> GetUsersByRole(string RoleName);
+
     }
 }

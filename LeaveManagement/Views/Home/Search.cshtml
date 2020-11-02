@@ -1,0 +1,28 @@
+﻿@model List<LeaveManagement.DataModels.ApplicationUser>
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+<div class="container-fluid col-md-4">
+    <h2 class="text-center">Search Employees</h2>
+    <form action="/Home/SearchResult" method="post">
+        <div class="active-cyan-4 mb-4">
+            <label for="search">Search By Username:</label>
+            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+        </div>
+        <label for="RoleSelect">Search By Role:</label>
+        <select id="ApprovedBy" name="RoleName" class="form-control">
+            <option value="ProjectManager">ProjectManager</option>
+            <option value="HumanResources">HumanResources</option>
+            <option value="Employee">Employee</option>
+        </select>
+        <br />
+        <div class="text-center">
+            <button class="btn btn-primary">Search</button>
+        </div>
+    </form>
+</div>
+    
+   

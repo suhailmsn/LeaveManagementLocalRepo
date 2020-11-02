@@ -1,17 +1,23 @@
-﻿@model List<Microsoft.AspNet.Identity.EntityFramework.IdentityUser>
+﻿@model List<LeaveManagement.DataModels.ApplicationUser>
 @{
-    ViewBag.Title = "Remove Employee Record";
+    ViewBag.Title = "SearchResult";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
+
+
 <body>
-    <br><br>
+    
     <div class="container-fluid col-md-8">
+        <br><br>
+            <div>
+                <h2 class="text-center">Results</h2>
+            </div>
         <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Email</th>
                     <th scope="col">Employee Username</th>
-                    <th scope="col">Phone Number</th>                   
+                    <th scope="col">Phone Number</th>
                 </tr>
             </thead>
             <tbody>
@@ -21,8 +27,8 @@
                     <tr>
                         <th scope="row">@item.Email</th>
                         <td>@item.UserName</td>
-                        <td>@item.PhoneNumber<td>         
-                         <button class="btn btn-danger" onclick="redirect('@item.Id')">Delete Record</button>
+                        <td>@item.PhoneNumber
+                        <td>
                     </tr>
                 }
             </tbody>
@@ -30,11 +36,4 @@
     </div>
 
 </body>
-<script>
-    function redirect(val) {
-        console.log(val);
-        var form = $('<form method="post" action="/Employee/Delete"><input type="hidden" name="id" value=' + val + '  ></form>');
-        $(form).appendTo('body').submit();
 
-    }
-</script>

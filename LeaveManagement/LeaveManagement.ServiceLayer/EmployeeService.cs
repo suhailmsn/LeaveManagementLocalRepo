@@ -46,8 +46,9 @@ namespace LeaveManagement.ServiceLayer
                 var authenticationManager = HttpContext.Current.GetOwinContext().Authentication;
                 var userIdentity = userManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
                 authenticationManager.SignIn(new AuthenticationProperties(), userIdentity);
-                
+
             }
+
 
         }
 
@@ -82,10 +83,16 @@ namespace LeaveManagement.ServiceLayer
         }
         public void ApplyLeave(NewLeaveViewModel nlvm)
         {
-            var config = new MapperConfiguration(cfg => { cfg.CreateMap<NewLeaveViewModel,LeaveData>(); cfg.IgnoreUnmapped(); });
+            var config = new MapperConfiguration(cfg => { cfg.CreateMap<NewLeaveViewModel, LeaveData>(); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
             LeaveData l = mapper.Map<NewLeaveViewModel, LeaveData>(nlvm);
             _employeeRepository.ApplyLeave(l);
         }
-    }    
+        public List<ApplicationUser> GetUsersByRole(string RoleName)
+        {
+            var appDbContext = new LeaveManagementDbContext();
+            List<ApplicationUser> user = appDbContext.ApplicationUser.Where(t => t.RoleName == RoleName).ToList();
+            return user;
+        }
+    }
 }

@@ -16,7 +16,6 @@ namespace LeaveManagement.ServiceLayer
     public class PMService : IPMService
     {
         private readonly PMRepository _pmrepository;
-        private readonly LeaveManagementDbContext _db;
         public PMService(PMRepository pmrepository)
         {
             _pmrepository = pmrepository;

@@ -110,6 +110,14 @@
     <Compile Include="Migrations\202011011651072_AddedPMUserName.designer.cs">
       <DependentUpon>202011011651072_AddedPMUserName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011021104545_CascadeOnDelete.cs" />
+    <Compile Include="Migrations\202011021104545_CascadeOnDelete.designer.cs">
+      <DependentUpon>202011021104545_CascadeOnDelete.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202011021230121_AddedRolesToUserTable.cs" />
+    <Compile Include="Migrations\202011021230121_AddedRolesToUserTable.designer.cs">
+      <DependentUpon>202011021230121_AddedRolesToUserTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PMRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -146,6 +154,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011011651072_AddedPMUserName.resx">
       <DependentUpon>202011011651072_AddedPMUserName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011021104545_CascadeOnDelete.resx">
+      <DependentUpon>202011021104545_CascadeOnDelete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011021230121_AddedRolesToUserTable.resx">
+      <DependentUpon>202011021230121_AddedRolesToUserTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
