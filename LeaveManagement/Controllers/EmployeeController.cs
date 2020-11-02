@@ -45,7 +45,7 @@ namespace LeaveManagement.Controllers
         {
             var result = _hrService.RegisterEmployeeProfile(rvm);
             if (result.Succeeded)
-                return RedirectToAction("Login", "Employee");
+                return RedirectToAction("Index", "Home");
             else
                 return View();
         }

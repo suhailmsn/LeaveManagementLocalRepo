@@ -42,7 +42,7 @@ namespace LeaveManagement
             if (userManager.FindByName("HumanResources") == null)
             {
                 var passwordHash=Crypto.HashPassword("humanresources123");
-                var user = new ApplicationUser() { Email = "humanresources@gmail.com", UserName = "HumanResources", PasswordHash = passwordHash, PhoneNumber = "0000", EmployeeInfo = new EmployeeInfo() };
+                var user = new ApplicationUser() { Email = "humanresources@gmail.com", UserName = "HumanResources", PasswordHash = passwordHash, PhoneNumber = "0000",RoleName= "HumanResources", EmployeeInfo = new EmployeeInfo() };
                 var chkUser = userManager.Create(user);
                 if (chkUser.Succeeded)
                 {
@@ -62,7 +62,7 @@ namespace LeaveManagement
             if (userManager.FindByName("ProjectManager") == null)
             {
                 var passwordHash = Crypto.HashPassword("projectmanager123");
-                var user = new ApplicationUser() { Email = "projectmanager@gmail.com", UserName = "ProjectManager", PasswordHash = passwordHash, PhoneNumber = "0000", EmployeeInfo = new EmployeeInfo() };
+                var user = new ApplicationUser() { Email = "projectmanager@gmail.com", UserName = "ProjectManager", PasswordHash = passwordHash, PhoneNumber = "0000", RoleName = "ProjectManager", EmployeeInfo = new EmployeeInfo() };
                 var chkUser = userManager.Create(user);
                 if (chkUser.Succeeded)
                 {

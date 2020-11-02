@@ -326,6 +326,8 @@
     <Content Include="Views\Leave\ApplyLeave.cshtml" />
     <Content Include="Views\Leave\ViewLeave.cshtml" />
     <Content Include="Views\Employee\Delete.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
+    <Content Include="Views\Home\SearchResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

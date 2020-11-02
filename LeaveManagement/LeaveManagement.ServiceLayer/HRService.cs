@@ -35,11 +35,11 @@ namespace LeaveManagement.ServiceLayer
             var userStore = new ApplicationUserStore(appDbContext);
             var userManager = new ApplicationUserManager(userStore);
             var passwordHash = Crypto.HashPassword(rvm.Password);
-            var user = new ApplicationUser() { Email = rvm.Email, UserName = rvm.Name, PasswordHash = passwordHash, PhoneNumber = rvm.Contact, EmployeeInfo = new EmployeeInfo() };
+            var user = new ApplicationUser() { Email = rvm.Email, UserName = rvm.Name, PasswordHash = passwordHash, PhoneNumber = rvm.Contact, RoleName =rvm.RoleName, EmployeeInfo = new EmployeeInfo() };
             var result = userManager.Create(user);
             if (result.Succeeded)
             {
-                userManager.AddToRole(user.Id, "Employee");
+                userManager.AddToRole(user.Id, rvm.RoleName);
             }
             return result;
         }
@@ -49,6 +49,10 @@ namespace LeaveManagement.ServiceLayer
             var userStore = new ApplicationUserStore(appDbContext);
             var userManager = new ApplicationUserManager(userStore);
             var user = userManager.FindById(Id);
+            EmployeeInfo ei=appDbContext.EmployeeInfo.Where(t => t.ApplicationUser.Id == Id).FirstOrDefault();
+            appDbContext.EmployeeInfo.Remove(ei);
+            //var roleId = userManager.GetRoles(Id).FirstOrDefault();
+            //userManager.RemoveFromRole(user.Id,roleId);
             var result = userManager.Delete(user);
             return result;
 

@@ -17,6 +17,16 @@ namespace LeaveManagement.Repositories
         public DbSet<EmployeeInfo> EmployeeInfo { get; set; }
         public DbSet<LeaveData> LeaveDatas { get; set; }
         public DbSet<LeaveType> LeaveTypes { get; set; }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<ApplicationUser>()
+                    
+                    .HasRequired(m => m.EmployeeInfo)
+                    .WithRequiredPrincipal(k => k.ApplicationUser)
+                    .WillCascadeOnDelete(true);
+
+        }
 
     }
 }
