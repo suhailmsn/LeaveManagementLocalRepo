@@ -18,7 +18,7 @@ namespace LeaveManagement.Repositories
         public void LeaveApproval(LeaveData l)
         {
             LeaveData ld;
-            ld = _db.LeaveDatas.Where(temp => temp.EmployeeID == l.EmployeeID).FirstOrDefault();
+            ld = _db.LeaveDatas.Where(temp => temp.LeaveID == l.LeaveID).FirstOrDefault();
             ld.ApprovalStatus = l.ApprovalStatus;
             ld.ApprovedBy = l.ApprovedBy;
             _db.SaveChanges();

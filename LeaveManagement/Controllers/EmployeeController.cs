@@ -6,10 +6,12 @@ using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
 using LeaveManagement.DataModels;
+using LeaveManagement.Filters;
 using LeaveManagement.Repositories;
 using LeaveManagement.ServiceLayer.Interfaces;
 using LeaveManagement.ViewModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 
 namespace LeaveManagement.Controllers
@@ -25,13 +27,19 @@ namespace LeaveManagement.Controllers
             _employeeService = employeeService;
 
         }
+
+
         //Employee register get method
+        [AuthenticationFilter]
+        [HumanResourcesAuthorizationFilter]
         public ActionResult Register()
         {
             return View();
         }
 
         //Employee register post method
+        [AuthenticationFilter]
+        [HumanResourcesAuthorizationFilter]
         [HttpPost]
         public ActionResult Register(RegisterViewModel rvm)
         {
@@ -40,6 +48,30 @@ namespace LeaveManagement.Controllers
                 return RedirectToAction("Login", "Employee");
             else
                 return View();
+        }
+
+
+
+
+        [AuthenticationFilter]
+        [HumanResourcesAuthorizationFilter]
+        public ActionResult Delete()
+        {
+            List<IdentityUser> Users=_hrService.ListAllEmployeeProfile();
+            return View(Users);
+        }
+
+        //Employee register post method
+        [AuthenticationFilter]
+        [HumanResourcesAuthorizationFilter]
+        [HttpPost]
+        public ActionResult Delete(string id)
+        {
+            var result = _hrService.DeleteEmployeeProfile(id);
+            if (result.Succeeded)
+                return RedirectToAction("Delete");
+            else
+                return RedirectToAction("Delete");
         }
 
         //Employee Login get method
@@ -68,12 +100,13 @@ namespace LeaveManagement.Controllers
         }
 
         //Logout method
+        [AuthenticationFilter]
         public ActionResult Logout()
         {
             _employeeService.EmployeeLogout();
             return RedirectToAction("Index", "Home");
         }
-
+        [AuthenticationFilter]
         public ActionResult EditInfo()
             {
             var appDbContext = new LeaveManagementDbContext();
@@ -94,6 +127,7 @@ namespace LeaveManagement.Controllers
             _employeeService.UpdateEmployeeInfo(evm);
                 return RedirectToAction("EditInfo");
             }
+        [AuthenticationFilter]
         [HttpPost]
         public ActionResult UploadImage(EmployeeInfoViewModel evm)
         {

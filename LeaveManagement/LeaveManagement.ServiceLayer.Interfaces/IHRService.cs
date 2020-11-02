@@ -6,12 +6,17 @@ using System.Threading.Tasks;
 using LeaveManagement.DataModels;
 using LeaveManagement.ViewModels;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LeaveManagement.ServiceLayer.Interfaces
 {
     public interface IHRService
     {
         IdentityResult RegisterEmployeeProfile(RegisterViewModel rvm);
+        IdentityResult DeleteEmployeeProfile(string Id);
+        List<IdentityUser> ListAllEmployeeProfile();
+        List<IdentityUser> ListAllEmployeeByName(string UserName);
+        List<IdentityUser> ListAllEmployeeByRole(string Role);
 
 
     }
