@@ -14,10 +14,11 @@ using System.Web.Helpers;
 using Microsoft.Owin.Security;
 using System.Web.Mvc;
 using System.Web;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace LeaveManagement.ServiceLayer
 {
-    public class HRService:IHRService
+    public class HRService : IHRService
     {
         private readonly IEmployeeService _employeeService;
         private readonly LeaveManagementDbContext _db;
@@ -40,9 +41,35 @@ namespace LeaveManagement.ServiceLayer
             {
                 userManager.AddToRole(user.Id, "Employee");
             }
-                return result;
+            return result;
         }
- 
+        public IdentityResult DeleteEmployeeProfile(string Id)
+        {
+            var appDbContext = new LeaveManagementDbContext();
+            var userStore = new ApplicationUserStore(appDbContext);
+            var userManager = new ApplicationUserManager(userStore);
+            var user = userManager.FindById(Id);
+            var result = userManager.Delete(user);
+            return result;
 
+        }
+        public List<IdentityUser> ListAllEmployeeProfile()
+        {
+            var appDbContext = new LeaveManagementDbContext();
+            var userStore = new ApplicationUserStore(appDbContext);
+            var userManager = new ApplicationUserManager(userStore);
+            List<IdentityUser> Users = appDbContext.Users.ToList();
+            return Users;
+        }
+        public List<IdentityUser> ListAllEmployeeByName(string UserName)
+        {
+            List<IdentityUser> user=new List<IdentityUser>();
+            return user;
+        }
+        public List<IdentityUser> ListAllEmployeeByRole(string Role)
+        {
+            List<IdentityUser> user = new List<IdentityUser>();
+            return user;
+        }
     }
 }

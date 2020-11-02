@@ -303,6 +303,9 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaveController.cs" />
+    <Compile Include="Filters\HumanResourcesAuthorizationFilter.cs" />
+    <Compile Include="Filters\MyAuthenticationFilter.cs" />
+    <Compile Include="Filters\ProjectManagerAuthorizationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -322,7 +325,7 @@
     <Content Include="Views\Shared\_UploadImage.cshtml" />
     <Content Include="Views\Leave\ApplyLeave.cshtml" />
     <Content Include="Views\Leave\ViewLeave.cshtml" />
-    <Content Include="Views\Leave\LeaveApproval.cshtml" />
+    <Content Include="Views\Employee\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
