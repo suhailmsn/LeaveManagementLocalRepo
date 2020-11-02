@@ -28,9 +28,9 @@ namespace LeaveManagement.ServiceLayer
             LeaveData l = mapper.Map<LeaveViewModel, LeaveData>(lvm);
             _pmrepository.LeaveApproval(l);
         }
-        public LeaveViewModel ViewLeaveByLeaveID(int lid, string eid)
+        public LeaveViewModel ViewLeaveByLeaveID(int lid)
         {
-            LeaveData l = _pmrepository.ViewLeaveByLeaveID(lid, eid);
+            LeaveData l = _pmrepository.ViewLeaveByLeaveID(lid);
             var config = new MapperConfiguration(cfg => { cfg.CreateMap<LeaveData,LeaveViewModel> (); cfg.IgnoreUnmapped(); });
             IMapper mapper = config.CreateMapper();
             LeaveViewModel lvm = mapper.Map<LeaveData, LeaveViewModel>(l);

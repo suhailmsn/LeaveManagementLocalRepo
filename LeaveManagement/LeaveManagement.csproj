@@ -303,6 +303,7 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LeaveController.cs" />
+    <Compile Include="Filters\CustomAuthorizationFilter.cs" />
     <Compile Include="Filters\HumanResourcesAuthorizationFilter.cs" />
     <Compile Include="Filters\MyAuthenticationFilter.cs" />
     <Compile Include="Filters\ProjectManagerAuthorizationFilter.cs" />

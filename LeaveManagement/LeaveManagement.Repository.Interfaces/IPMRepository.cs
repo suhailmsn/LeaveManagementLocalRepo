@@ -10,7 +10,7 @@ namespace LeaveManagement.Repository.Interfaces
     public interface IPMRepository
     {
         void LeaveApproval(LeaveData l);
-        LeaveData ViewLeaveByLeaveID(int lid, string eid);
+        LeaveData ViewLeaveByLeaveID(int lid);
         List<LeaveData> ViewAllLeave(string eid);
 
     }

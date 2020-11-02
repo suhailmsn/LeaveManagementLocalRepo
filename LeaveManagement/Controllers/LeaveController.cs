@@ -40,7 +40,7 @@ namespace LeaveManagement.Controllers
         }
 
 
-        [ProjectManagerAuthorizationFilter]
+        [CustomAuthorizationFilter]
         [AuthenticationFilter]
         public ActionResult ViewLeave()
         {
@@ -49,13 +49,13 @@ namespace LeaveManagement.Controllers
             return View(lvm);
         }
 
-
+        [CustomAuthorizationFilter]
         [AuthenticationFilter]
         [HttpPost]
         public ActionResult ViewLeave(int[] Leave)
         {
             string pmname = _employeeService.GetUserName();
-            LeaveViewModel lvm = _pmService.ViewLeaveByLeaveID(Leave[0], pmname);
+            LeaveViewModel lvm = _pmService.ViewLeaveByLeaveID(Leave[0]);
             lvm.ApprovalStatus = Leave[1];
             _pmService.LeaveApproval(lvm);
             return RedirectToAction("ViewLeave");

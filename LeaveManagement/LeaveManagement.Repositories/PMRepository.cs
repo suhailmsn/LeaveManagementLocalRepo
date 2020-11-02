@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using LeaveManagement.DataModels;
 using LeaveManagement.Repository.Interfaces;
+using Microsoft.AspNet.Identity;
 
 namespace LeaveManagement.Repositories
 {
@@ -17,25 +18,36 @@ namespace LeaveManagement.Repositories
         }
         public void LeaveApproval(LeaveData l)
         {
-            LeaveData ld;
-            ld = _db.LeaveDatas.Where(temp => temp.LeaveID == l.LeaveID).FirstOrDefault();
+            var appDbContext = new LeaveManagementDbContext();
+            var userStore = new ApplicationUserStore(appDbContext);
+            var userManager = new ApplicationUserManager(userStore);
+            LeaveData ld = _db.LeaveDatas.Where(temp => temp.LeaveID == l.LeaveID).FirstOrDefault();
+            ld.ApprovedBy = HttpContext.Current.User.Identity.GetUserName();
             ld.ApprovalStatus = l.ApprovalStatus;
-            ld.ApprovedBy = l.ApprovedBy;
             _db.SaveChanges();
 
         }
-        public LeaveData ViewLeaveByLeaveID(int lid, string eid)
+        public LeaveData ViewLeaveByLeaveID(int lid)
         {
             LeaveData ld;
-            ld = _db.LeaveDatas.Where(temp => temp.ApprovedBy == eid && temp.LeaveID == lid).FirstOrDefault();
+            ld = _db.LeaveDatas.Where(temp=>temp.LeaveID == lid).FirstOrDefault();
             return ld;
 
         }
         public List<LeaveData> ViewAllLeave(string eid)
         {
-            List<LeaveData> ld;
-            ld = _db.LeaveDatas.Where(temp =>temp.ApprovedBy == eid).ToList();
-            return ld;
+            if (HttpContext.Current.User.IsInRole("HumanResources") == false)
+            {
+                List<LeaveData> ld;
+                ld = _db.LeaveDatas.Where(temp => temp.ApprovedBy == eid).ToList();
+                return ld;
+            }
+            else
+            {
+                List<LeaveData> ld;
+                ld = _db.LeaveDatas.ToList();
+                return ld;
+            }
         }
     }
 }
