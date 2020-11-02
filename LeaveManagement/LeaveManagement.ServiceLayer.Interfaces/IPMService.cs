@@ -10,7 +10,7 @@ namespace LeaveManagement.ServiceLayer.Interfaces
     public interface IPMService
     {
         void LeaveApproval(LeaveViewModel lvm);
-        LeaveViewModel ViewLeaveByLeaveID(int lid, string eid);
+        LeaveViewModel ViewLeaveByLeaveID(int lid);
         List<LeaveViewModel> ViewAllLeave(string eid);
     }
 }

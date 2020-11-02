@@ -118,6 +118,10 @@
     <Compile Include="Migrations\202011021230121_AddedRolesToUserTable.designer.cs">
       <DependentUpon>202011021230121_AddedRolesToUserTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011021355510_AddedSpecialPermission.cs" />
+    <Compile Include="Migrations\202011021355510_AddedSpecialPermission.designer.cs">
+      <DependentUpon>202011021355510_AddedSpecialPermission.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="PMRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -160,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202011021230121_AddedRolesToUserTable.resx">
       <DependentUpon>202011021230121_AddedRolesToUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011021355510_AddedSpecialPermission.resx">
+      <DependentUpon>202011021355510_AddedSpecialPermission.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

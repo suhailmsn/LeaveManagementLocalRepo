@@ -51,10 +51,7 @@
                     if (Roles.IsUserInRole("ProjectManager") == true)
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="/Employee/EditInfo">@User.Identity.Name - Project Manager</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Leave/ApplyLeave">Apply Leave</a>
+                            <a class="nav-link" href="/Employee/EditInfo">@User.Identity.Name - PM</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Leave/ViewLeave">View Leave</a>
@@ -63,7 +60,7 @@
                     if (Roles.IsUserInRole("Employee") == true)
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="/Employee/EditInfo">@User.Identity.Name - Employee</a>
+                            <a class="nav-link" href="/Employee/EditInfo">@User.Identity.Name</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Leave/ApplyLeave">Apply Leave</a>
@@ -72,16 +69,16 @@
                     if (Roles.IsUserInRole("HumanResources") == true)
                     {
                         <li class="nav-item">
-                            <a class="nav-link" href="/Employee/EditInfo">@User.Identity.Name -Human Resources </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/Leave/ApplyLeave">Apply Leave</a>
+                            <a class="nav-link" href="/Employee/EditInfo">@User.Identity.Name -HR </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Employee/Register">Register Employee</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/Employee/Delete">Delete Employee</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/Leave/ViewLeave">View Leave</a>
                         </li>
 
                     }

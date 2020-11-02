@@ -25,6 +25,7 @@ namespace LeaveManagement.ViewModels
 
         [Required]
         public string RoleName { get; set; }
+        public bool IsSpecialPermission { get; set; }
 
 
     }

@@ -14,6 +14,7 @@ namespace LeaveManagement.DataModels
     public class ApplicationUser:IdentityUser
     {  
        public string RoleName { get; set; }
+       public bool IsSpecialPermission { get; set; } 
        public virtual EmployeeInfo EmployeeInfo { get; set; }
        public virtual List<LeaveData> LeaveData { get; set; }
 
