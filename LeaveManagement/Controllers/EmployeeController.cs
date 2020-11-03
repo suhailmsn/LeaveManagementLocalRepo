@@ -52,7 +52,7 @@ namespace LeaveManagement.Controllers
 
 
 
-
+        //Employee delete get method
         [AuthenticationFilter]
         [HumanResourcesAuthorizationFilter]
         public ActionResult Delete()
@@ -61,7 +61,7 @@ namespace LeaveManagement.Controllers
             return View(Users);
         }
 
-        //Employee register post method
+        //Employee delete post method
         [AuthenticationFilter]
         [HumanResourcesAuthorizationFilter]
         [HttpPost]
@@ -74,12 +74,15 @@ namespace LeaveManagement.Controllers
                 return RedirectToAction("Delete");
         }
 
+
+
         //Employee Login get method
         public ActionResult Login()
         {
-
             return View();
         }
+
+
 
         //Employee Login post method
         [HttpPost]
@@ -99,6 +102,8 @@ namespace LeaveManagement.Controllers
             }       
         }
 
+
+
         //Logout method
         [AuthenticationFilter]
         public ActionResult Logout()
@@ -106,6 +111,10 @@ namespace LeaveManagement.Controllers
             _employeeService.EmployeeLogout();
             return RedirectToAction("Index", "Home");
         }
+
+
+
+        //Function to edit empolyee details
         [AuthenticationFilter]
         public ActionResult EditInfo()
             {
@@ -127,6 +136,9 @@ namespace LeaveManagement.Controllers
             _employeeService.UpdateEmployeeInfo(evm);
                 return RedirectToAction("EditInfo");
             }
+
+
+        //Function to upload user image
         [AuthenticationFilter]
         [HttpPost]
         public ActionResult UploadImage(EmployeeInfoViewModel evm)

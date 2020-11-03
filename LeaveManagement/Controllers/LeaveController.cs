@@ -21,8 +21,8 @@ namespace LeaveManagement.Controllers
             _employeeService = employeeService;
             _hrService=hrService;
         }
-        
 
+        // GET: Function to apply for leave
         [AuthenticationFilter]
         public ActionResult ApplyLeave()
         {
@@ -32,6 +32,7 @@ namespace LeaveManagement.Controllers
         }
 
 
+        // POST: Function to apply for leave
         [AuthenticationFilter]
         [HttpPost]
         public ActionResult ApplyLeave(NewLeaveViewModel nlvm)
@@ -45,7 +46,7 @@ namespace LeaveManagement.Controllers
             return View(user);
         }
 
-
+        // GET: Function to view leave
         [CustomAuthorizationFilter]
         [AuthenticationFilter]
         public ActionResult ViewLeave()
@@ -55,6 +56,7 @@ namespace LeaveManagement.Controllers
             return View(lvm);
         }
 
+        // POST: Function to approve/reject leave
         [CustomAuthorizationFilter]
         [AuthenticationFilter]
         [HttpPost]
@@ -67,12 +69,19 @@ namespace LeaveManagement.Controllers
             _pmService.LeaveApproval(lvm);
             return RedirectToAction("SendMail", new { ToEmail = email });
         }
+
+        // GET: Function to send mail
+        [CustomAuthorizationFilter]
+        [AuthenticationFilter]
         public ActionResult SendMail(string ToEmail)
         {
             ViewBag.FromEmail="projectleave7@gmail.com";
             ViewBag.ToEmail = ToEmail;
             return View();
         }
+
+
+        // POST: Function to send mail
         [HttpPost]
         public ActionResult SendMail(MailViewModel mvm)
         {
