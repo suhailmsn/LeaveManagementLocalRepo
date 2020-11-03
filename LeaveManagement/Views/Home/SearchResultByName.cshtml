@@ -1,0 +1,34 @@
+﻿@model LeaveManagement.DataModels.ApplicationUser
+@{
+    ViewBag.Title = "SearchResult";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+<body>
+
+    <div class="container-fluid col-md-8">
+        <br><br>
+        <div>
+            <h2 class="text-center">Results</h2>
+        </div>
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Email</th>
+                    <th scope="col">Employee Username</th>
+                    <th scope="col">Phone Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr>
+                        <th scope="row">@Model.Email</th>
+                        <td>@Model.UserName</td>
+                        <td>@Model.PhoneNumber
+                        <td>
+                    </tr>               
+            </tbody>
+        </table>
+    </div>
+
+</body>

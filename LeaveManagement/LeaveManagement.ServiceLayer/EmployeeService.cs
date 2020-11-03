@@ -13,8 +13,7 @@ using LeaveManagement.ServiceLayer.Interfaces;
 using Microsoft.AspNet.Identity;
 using System.Web;
 using Microsoft.Owin.Security;
-
-
+using System.Web.UI.WebControls;
 
 namespace LeaveManagement.ServiceLayer
 {
@@ -33,6 +32,12 @@ namespace LeaveManagement.ServiceLayer
         public string GetUserName()
         {
             return (HttpContext.Current.User.Identity.GetUserName());
+        }
+        public string GetUserEmailByID(string id)
+        {
+            var appDbContext = new LeaveManagementDbContext();
+            var user=appDbContext.ApplicationUser.Where(t => t.Id == id).FirstOrDefault();
+            return (user.Email);
         }
         public void EmployeeLogin(LoginViewModel lvm)
         {
@@ -92,6 +97,12 @@ namespace LeaveManagement.ServiceLayer
         {
             var appDbContext = new LeaveManagementDbContext();
             List<ApplicationUser> user = appDbContext.ApplicationUser.Where(t => t.RoleName == RoleName).ToList();
+            return user;
+        }
+        public ApplicationUser GetUsersByName(string UserName)
+        {
+            var appDbContext = new LeaveManagementDbContext();
+            ApplicationUser user = appDbContext.ApplicationUser.Where(t => t.UserName == UserName).FirstOrDefault();
             return user;
         }
     }

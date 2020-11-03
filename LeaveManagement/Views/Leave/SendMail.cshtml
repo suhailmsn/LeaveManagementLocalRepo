@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "SendMail";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+<h2>SendMail</h2>
+<div class="container-fluid col-md-6">
+    <form novalidate="novalidate" action="/Leave/SendMail" method="post" class="needs-validation">
+        <div class="form-row">
+            <div class="form-group col-sm-12">
+                <label for="Email">From Email:</label>
+                <input type="email" class="form-control" id="Email" placeholder="From Email address" name="FromEmail" value=@ViewBag.FromEmail required="required" />
+            </div>
+        </div>
+        <br />
+        <div class="form-row">
+            <div class="form-group col-sm-12">
+                <label for="Email">To Email:</label>
+                <input type="email" class="form-control" id="Email" name="ToEmail" required="required" value=@ViewBag.ToEmail />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-sm-12">
+                <label for="Subject">Subject:</label>
+                <input type="text" class="form-control" placeholder="Mail Subject" name="Subject" required="required" />
+            </div>
+        </div>
+        <br />
+        <div class="form-row">
+            <div class="form-group col-sm-12">
+                <label for="Password">Email Body:</label>
+                <textarea class="form-control" placeholder="Body" name="Body" required="required" rows="3" />
+                </textarea>
+            </div>
+        </div>
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Send</button>
+        </div>
+    </form>
+</div>

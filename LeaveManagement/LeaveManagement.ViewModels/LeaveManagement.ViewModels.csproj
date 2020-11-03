@@ -54,6 +54,7 @@
     <Compile Include="EmployeeInfoViewModel.cs" />
     <Compile Include="LeaveViewModel.cs" />
     <Compile Include="LoginViewModel.cs" />
+    <Compile Include="MailViewModel.cs" />
     <Compile Include="NewLeaveViewModel.cs" />
     <Compile Include="RegisterViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

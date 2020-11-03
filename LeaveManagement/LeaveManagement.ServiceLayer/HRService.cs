@@ -57,23 +57,14 @@ namespace LeaveManagement.ServiceLayer
             return result;
 
         }
-        public List<IdentityUser> ListAllEmployeeProfile()
+        public List<ApplicationUser> ListAllEmployeeProfile()
         {
             var appDbContext = new LeaveManagementDbContext();
             var userStore = new ApplicationUserStore(appDbContext);
             var userManager = new ApplicationUserManager(userStore);
-            List<IdentityUser> Users = appDbContext.Users.ToList();
+            List<ApplicationUser> Users = appDbContext.ApplicationUser.ToList();
             return Users;
         }
-        public List<IdentityUser> ListAllEmployeeByName(string UserName)
-        {
-            List<IdentityUser> user=new List<IdentityUser>();
-            return user;
-        }
-        public List<IdentityUser> ListAllEmployeeByRole(string Role)
-        {
-            List<IdentityUser> user = new List<IdentityUser>();
-            return user;
-        }
+      
     }
 }

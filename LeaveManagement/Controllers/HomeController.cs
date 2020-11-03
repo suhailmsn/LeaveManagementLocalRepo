@@ -27,13 +27,19 @@ namespace LeaveManagement.Controllers
         }
         public ActionResult Search()
         {
-
-            return View();
+            var users=_hrService.ListAllEmployeeProfile();
+            return View(users);
         }
         [HttpPost]
         public ActionResult SearchResult(string roleName)
         {
             List<ApplicationUser> users = _employeeService.GetUsersByRole(roleName);
+            return View(users);
+        }
+        [HttpPost]
+        public ActionResult SearchResultByName(string UserName)
+        {
+            ApplicationUser users = _employeeService.GetUsersByName(UserName);
             return View(users);
         }
     }

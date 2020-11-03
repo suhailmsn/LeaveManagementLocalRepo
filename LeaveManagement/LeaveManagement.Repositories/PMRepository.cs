@@ -36,15 +36,14 @@ namespace LeaveManagement.Repositories
         }
         public List<LeaveData> ViewAllLeave(string eid)
         {
+            List<LeaveData> ld;
             if (HttpContext.Current.User.IsInRole("HumanResources") == false)
             {
-                List<LeaveData> ld;
                 ld = _db.LeaveDatas.Where(temp => temp.ApprovedBy == eid).ToList();
                 return ld;
             }
             else
             {
-                List<LeaveData> ld;
                 ld = _db.LeaveDatas.ToList();
                 return ld;
             }
