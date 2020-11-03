@@ -329,6 +329,8 @@
     <Content Include="Views\Employee\Delete.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
     <Content Include="Views\Home\SearchResult.cshtml" />
+    <Content Include="Views\Leave\SendMail.cshtml" />
+    <Content Include="Views\Home\SearchResultByName.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

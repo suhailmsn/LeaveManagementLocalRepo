@@ -57,7 +57,7 @@ namespace LeaveManagement.Controllers
         [HumanResourcesAuthorizationFilter]
         public ActionResult Delete()
         {
-            List<IdentityUser> Users=_hrService.ListAllEmployeeProfile();
+            List<ApplicationUser> Users=_hrService.ListAllEmployeeProfile();
             return View(Users);
         }
 

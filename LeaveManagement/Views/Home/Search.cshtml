@@ -7,22 +7,33 @@
 
 <div class="container-fluid col-md-4">
     <h2 class="text-center">Search Employees</h2>
-    <form action="/Home/SearchResult" method="post">
+    <form action="/Home/SearchResultByName" method="post">
         <div class="active-cyan-4 mb-4">
-            <label for="search">Search By Username:</label>
-            <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+            <label for="UserName">Search By Username:</label>
+            <select id="byname" name="UserName" class="form-control">
+                @foreach (var item in Model)
+                {
+                    <option value="@item.UserName">@item.UserName</option>
+                }
+            </select>
+            <br />
+            <div class="text-center">
+                <button class="btn btn-primary">Search by Name</button>
+            </div>
         </div>
-        <label for="RoleSelect">Search By Role:</label>
-        <select id="ApprovedBy" name="RoleName" class="form-control">
-            <option value="ProjectManager">ProjectManager</option>
-            <option value="HumanResources">HumanResources</option>
-            <option value="Employee">Employee</option>
-        </select>
-        <br />
-        <div class="text-center">
-            <button class="btn btn-primary">Search</button>
-        </div>
-    </form>
+        </form>
+        <form action="/Home/SearchResult" method="post">
+            <label for="RoleSelect">Search By Role:</label>
+            <select id="ApprovedBy" name="RoleName" class="form-control">
+                <option value="ProjectManager">ProjectManager</option>
+                <option value="HumanResources">HumanResources</option>
+                <option value="Employee">Employee</option>
+            </select>
+            <br />
+            <div class="text-center">
+                <button class="btn btn-primary">Search by Role</button>
+            </div>
+        </form>
 </div>
     
    

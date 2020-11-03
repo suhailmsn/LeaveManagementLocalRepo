@@ -14,10 +14,7 @@ namespace LeaveManagement.ServiceLayer.Interfaces
     {
         IdentityResult RegisterEmployeeProfile(RegisterViewModel rvm);
         IdentityResult DeleteEmployeeProfile(string Id);
-        List<IdentityUser> ListAllEmployeeProfile();
-        List<IdentityUser> ListAllEmployeeByName(string UserName);
-        List<IdentityUser> ListAllEmployeeByRole(string Role);
-
+        List<ApplicationUser> ListAllEmployeeProfile();
 
     }
 }
