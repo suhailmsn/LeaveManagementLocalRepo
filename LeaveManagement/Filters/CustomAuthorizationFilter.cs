@@ -12,7 +12,7 @@ namespace LeaveManagement.Filters
     public class CustomAuthorizationFilter : FilterAttribute, IActionFilter
     {
     
-public void OnActionExecuted(ActionExecutedContext filterContext)
+        public void OnActionExecuted(ActionExecutedContext filterContext)
         {
     
         }

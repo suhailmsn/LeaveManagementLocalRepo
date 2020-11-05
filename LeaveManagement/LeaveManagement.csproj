@@ -305,7 +305,7 @@
     <Compile Include="Controllers\LeaveController.cs" />
     <Compile Include="Filters\CustomAuthorizationFilter.cs" />
     <Compile Include="Filters\HumanResourcesAuthorizationFilter.cs" />
-    <Compile Include="Filters\MyAuthenticationFilter.cs" />
+    <Compile Include="Filters\AuthenticationFilter.cs" />
     <Compile Include="Filters\ProjectManagerAuthorizationFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

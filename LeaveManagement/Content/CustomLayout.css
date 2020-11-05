@@ -6,10 +6,8 @@
  * Custom translucent site header
  */
 
-.site-header {
+navbar navbar-expand-md {
     background-color: rgba(0, 0, 0, .85);
-    -webkit-backdrop-filter: saturate(180%) blur(20px);
-    backdrop-filter: saturate(180%) blur(20px);
 }
 
     .site-header a {
@@ -136,3 +134,18 @@
         border-top-left-radius: 0;
         border-top-right-radius: 0;
     }
+.page-footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width:100%;
+    padding-top:30px;
+
+}
+body {
+    padding-bottom: 300px;
+}
+
+h6{
+    color:black;
+}
