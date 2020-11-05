@@ -104,6 +104,9 @@
             $(".splprm").hide();
         });
         $(document).on("submit", ".needs-validation", validate);
+        $('form').on('submit', function () {
+            alert('submitted');
+        });
         $(".needs-validation input").blur(validate);
         function validate(event) {
             if ($(".needs-validation")[0].checkValidity() == false || $(".email-exist").text() != "") {

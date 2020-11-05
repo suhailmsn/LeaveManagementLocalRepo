@@ -3,6 +3,7 @@
     ViewBag.Title = "ViewLeave";
     Layout = "~/Views/Shared/_Layout1.cshtml";
 }
+<html>
 <body>
     <br><br>
     <div class="container-fluid col-md-8">
@@ -24,42 +25,42 @@
 
                 @foreach (var item in Model)
                 {
-                <tr>
+                    <tr>
 
 
-                    <th scope="row">@item.LeaveID</th>
-                    <td>@item.EmployeeUserName</td>
-                    <td>@item.FromDate</td>
-                    <td>@item.ToDate</td>
-                    <td>@item.IsForenoonOnly</td>
-                    <td>@item.IsAfternoonOnly</td>
-                    <td>@item.LeaveTypeID</td>
-                    <td>@item.LeaveReason</td>
-                    <td>@item.ApprovedBy</td>
-                    @if (@item.ApprovalStatus == 0)
-                    {
-                        <td><button class="btn btn-primary" onclick="redirect(@item.LeaveID,1)">Approve</button></td>
-                        <td><button class="btn btn-danger" onclick="redirect(@item.LeaveID,-1)">Reject</button></td>
-                    }
-                    @if (@item.ApprovalStatus == 1)
-                    {
-                        <td><button class="btn btn-secondary">Approved</button></td>
-                    }
-                    @if (@item.ApprovalStatus == -1)
-                    {
-                        <td><button class="btn btn-secondary">Rejected</button></td>
-                    }
-                </tr>
+                        <th scope="row">@item.LeaveID</th>
+                        <td>@item.EmployeeUserName</td>
+                        <td>@item.FromDate</td>
+                        <td>@item.ToDate</td>
+                        <td>@item.IsForenoonOnly</td>
+                        <td>@item.IsAfternoonOnly</td>
+                        <td>@item.LeaveTypeID</td>
+                        <td>@item.LeaveReason</td>
+                        <td>@item.ApprovedBy</td>
+                        @if (@item.ApprovalStatus == 0)
+                        {
+                            <td><button class="btn btn-primary" onclick="redirect(@item.LeaveID,1)">Approve</button></td>
+                            <td><button class="btn btn-danger" onclick="redirect(@item.LeaveID,-1)">Reject</button></td>
+                        }
+                        @if (@item.ApprovalStatus == 1)
+                        {
+                            <td><button class="btn btn-secondary">Approved</button></td>
+                        }
+                        @if (@item.ApprovalStatus == -1)
+                        {
+                            <td><button class="btn btn-secondary">Rejected</button></td>
+                        }
+                    </tr>
                 }
             </tbody>
         </table>
     </div>
-    
 </body>
+</html>
 <script>
     function redirect(val, approve) {
         var form = $('<form method="post" action="ViewLeave"><input type="hidden" name="leave[0]" value=' + val + '  ><input type ="hidden" name="leave[1]" value=' + approve + '></form>');
         $(form).appendTo('body').submit();
-                    
+
     }
 </script>
